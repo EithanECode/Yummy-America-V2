@@ -1,0 +1,48 @@
+1. Objetivo del Proyecto
+Desarrollar una aplicación de transporte de pasajeros (similar a Uber/DiDi) enfocada inicialmente en la experiencia del usuario (pasajero). La aplicación prioriza la seguridad, la eficiencia y una interfaz de usuario intuitiva.
+
+2. Pila Tecnológica
+Tecnología Principal: Flutter para desarrollo multiplataforma (iOS y Android).
+
+Base de datos: Supabase
+
+3. Principios de Diseño y Estilo Visual
+Estilo General: Moderno, intuitivo y minimalista.
+
+Paleta de Colores Principal:
+
+Azul: Para elementos interactivos primarios, selecciones y señales de ubicación del usuario.
+
+Negro: Para fondos principales, contenedores y como base para el contraste.
+
+Amarillo: Para llamadas a la acción clave (botones principales), elementos que requieren atención inmediata y realce visual.
+
+Adicionales: Blanco y grises claros para texto y elementos secundarios que necesiten alto contraste.
+
+4. Estructura y Componentes (Guía General para la IA)
+Al generar código o estructuras, considera:
+
+Componentes Requeridos: Especifica explícitamente los elementos de UI necesarios (e.g., ElevatedButton, TextFormField, Image, Column, Row, Stack, Navigator).
+
+Modularidad: Sugiere que los componentes sean lo más reutilizables posible.
+
+Navegación: Indica cómo una pantalla se conecta y transiciona a la siguiente (Navigator.push, Navigator.pushReplacement).
+
+Estado: Usa StatelessWidget para pantallas estáticas y StatefulWidget cuando se requiera gestionar el estado interno.
+
+5. Foco Actual de Desarrollo (Secuencia Inicial de Pantallas)
+Estamos comenzando con el flujo de inicio y autenticación de la aplicación del pasajero:
+
+Splash Screen: Pantalla de carga inicial (corta duración).
+
+Welcome Screen: Introducción a la app, con botones "Registrarse" e "Iniciar Sesión".
+
+Authentication Hub / Registro / Login: Pantalla para elegir entre "Continuar con Google", "Registrarse con Correo/Teléfono" o "Iniciar Sesión".
+
+Proceso de Verificación de Identidad (DNI y Reconocimiento Facial):
+
+Obligatorio: Los usuarios deben completar este proceso (subida de DNI y verificación facial) antes de acceder a la funcionalidad principal de la app.
+
+Gating: Si un usuario inicia sesión o se registra pero no ha verificado su identidad, será redirigido a este flujo hasta que lo complete exitosamente.
+
+Mapa Principal de la Aplicación: La pantalla central de operación, accesible solo después de la verificación completa.
