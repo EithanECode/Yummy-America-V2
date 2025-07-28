@@ -1,0 +1,110 @@
+import 'package:flutter/material.dart';
+import '../../pages/splash_page.dart';
+import '../../pages/welcome_page.dart';
+import '../../pages/auth_hub_page.dart';
+import '../../pages/login_page.dart';
+import '../../pages/register_page.dart';
+import '../../pages/verification_page.dart';
+import '../../pages/map_page.dart';
+
+class AppRouter {
+  // Rutas de la aplicación
+  static const String splash = '/';
+  static const String welcome = '/welcome';
+  static const String authHub = '/auth-hub';
+  static const String login = '/login';
+  static const String register = '/register';
+  static const String verification = '/verification';
+  static const String map = '/map';
+
+  // Generador de rutas
+  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case splash:
+        return MaterialPageRoute(
+          builder: (_) => const SplashPage(),
+          settings: settings,
+        );
+
+      case welcome:
+        return MaterialPageRoute(
+          builder: (_) => const WelcomePage(),
+          settings: settings,
+        );
+
+      case authHub:
+        return MaterialPageRoute(
+          builder: (_) => const AuthHubPage(),
+          settings: settings,
+        );
+
+      case login:
+        return MaterialPageRoute(
+          builder: (_) => const LoginPage(),
+          settings: settings,
+        );
+
+      case register:
+        return MaterialPageRoute(
+          builder: (_) => const RegisterPage(),
+          settings: settings,
+        );
+
+      case verification:
+        return MaterialPageRoute(
+          builder: (_) => const VerificationPage(),
+          settings: settings,
+        );
+
+      case map:
+        return MaterialPageRoute(
+          builder: (_) => const MapPage(),
+          settings: settings,
+        );
+
+      default:
+        return MaterialPageRoute(
+          builder: (_) => const SplashPage(),
+          settings: settings,
+        );
+    }
+  }
+
+  // Métodos de navegación
+  static void navigateTo(
+    BuildContext context,
+    String routeName, {
+    Object? arguments,
+  }) {
+    Navigator.pushNamed(context, routeName, arguments: arguments);
+  }
+
+  static void navigateToReplacement(
+    BuildContext context,
+    String routeName, {
+    Object? arguments,
+  }) {
+    Navigator.pushReplacementNamed(context, routeName, arguments: arguments);
+  }
+
+  static void navigateToAndClear(
+    BuildContext context,
+    String routeName, {
+    Object? arguments,
+  }) {
+    Navigator.pushNamedAndRemoveUntil(
+      context,
+      routeName,
+      (route) => false,
+      arguments: arguments,
+    );
+  }
+
+  static void goBack(BuildContext context) {
+    Navigator.pop(context);
+  }
+
+  static void goBackTo(BuildContext context, String routeName) {
+    Navigator.popUntil(context, ModalRoute.withName(routeName));
+  }
+}
