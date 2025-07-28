@@ -1,21 +1,23 @@
 import 'package:flutter/material.dart';
 import '../../pages/splash_page.dart';
 import '../../pages/welcome_page.dart';
-import '../../pages/auth_hub_page.dart';
 import '../../pages/login_page.dart';
 import '../../pages/register_page.dart';
 import '../../pages/verification_page.dart';
 import '../../pages/map_page.dart';
+import '../../pages/phone_verification_page.dart';
+import '../../pages/add_phone_page.dart';
 
 class AppRouter {
   // Rutas de la aplicación
   static const String splash = '/';
   static const String welcome = '/welcome';
-  static const String authHub = '/auth-hub';
   static const String login = '/login';
   static const String register = '/register';
   static const String verification = '/verification';
   static const String map = '/map';
+  static const String phoneVerification = '/phone-verification';
+  static const String addPhone = '/add-phone';
 
   // Generador de rutas
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -32,11 +34,7 @@ class AppRouter {
           settings: settings,
         );
 
-      case authHub:
-        return MaterialPageRoute(
-          builder: (_) => const AuthHubPage(),
-          settings: settings,
-        );
+
 
       case login:
         return MaterialPageRoute(
@@ -59,6 +57,22 @@ class AppRouter {
       case map:
         return MaterialPageRoute(
           builder: (_) => const MapPage(),
+          settings: settings,
+        );
+
+      case phoneVerification:
+        final args = settings.arguments as Map<String, dynamic>?;
+        return MaterialPageRoute(
+          builder: (_) => PhoneVerificationPage(
+            phoneNumber: args?['phoneNumber'] ?? '',
+            isFromGoogle: args?['isFromGoogle'] ?? false,
+          ),
+          settings: settings,
+        );
+
+      case addPhone:
+        return MaterialPageRoute(
+          builder: (_) => const AddPhonePage(),
           settings: settings,
         );
 

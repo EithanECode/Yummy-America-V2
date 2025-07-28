@@ -82,7 +82,7 @@ class WelcomePage extends StatelessWidget {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          AppRouter.navigateTo(context, AppRouter.authHub);
+                          AppRouter.navigateTo(context, AppRouter.register);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.blue,
@@ -105,7 +105,7 @@ class WelcomePage extends StatelessWidget {
                       width: double.infinity,
                       child: OutlinedButton(
                         onPressed: () {
-                          AppRouter.navigateTo(context, AppRouter.authHub);
+                          AppRouter.navigateTo(context, AppRouter.login);
                         },
                         style: OutlinedButton.styleFrom(
                           foregroundColor: AppColors.blue,

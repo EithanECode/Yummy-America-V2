@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../core/routes/app_router.dart';
 import '../core/theme/app_colors.dart';
 import '../core/theme/app_text_styles.dart';
+import '../widgets/google_icon.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -181,6 +182,62 @@ class _LoginPageState extends State<LoginPage> {
                             'Iniciar Sesión',
                             style: AppTextStyles.buttonText,
                           ),
+                  ),
+                ),
+                const SizedBox(height: 24),
+
+                // Separador
+                Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        color: AppColors.borderLight,
+                        thickness: 1,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        'o',
+                        style: AppTextStyles.bodyMedium.copyWith(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        color: AppColors.borderLight,
+                        thickness: 1,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24),
+
+                // Botón de Google
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      // TODO: Implementar login con Google
+                    },
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppColors.textPrimary,
+                      side: BorderSide(color: AppColors.borderLight, width: 1),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    icon: const GoogleIcon(
+                      size: 24,
+                    ),
+                    label: Text(
+                      'Iniciar sesión con Google',
+                      style: AppTextStyles.buttonText.copyWith(
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 24),

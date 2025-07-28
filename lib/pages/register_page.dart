@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import '../core/routes/app_router.dart';
 import '../core/theme/app_colors.dart';
 import '../core/theme/app_text_styles.dart';
+import 'phone_verification_page.dart';
+import 'add_phone_page.dart';
+import '../widgets/google_icon.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -46,8 +49,16 @@ class _RegisterPageState extends State<RegisterPage> {
           _isLoading = false;
         });
 
-        // Navegar a verificación después del registro
-        AppRouter.navigateToAndClear(context, AppRouter.verification);
+        // Navegar a verificación de teléfono después del registro
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => PhoneVerificationPage(
+              phoneNumber: _phoneController.text,
+              isFromGoogle: false,
+            ),
+          ),
+        );
       }
     } else if (!_acceptTerms) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -291,6 +302,68 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           )
                         : Text('Crear Cuenta', style: AppTextStyles.buttonText),
+                  ),
+                ),
+                const SizedBox(height: 24),
+
+                // Separador
+                Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        color: AppColors.borderLight,
+                        thickness: 1,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      child: Text(
+                        'o',
+                        style: AppTextStyles.bodyMedium.copyWith(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        color: AppColors.borderLight,
+                        thickness: 1,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 24),
+
+                // Botón de Google
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton.icon(
+                    onPressed: () {
+                      // TODO: Implementar registro con Google
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AddPhonePage(),
+                        ),
+                      );
+                    },
+                    style: OutlinedButton.styleFrom(
+                      foregroundColor: AppColors.textPrimary,
+                      side: BorderSide(color: AppColors.borderLight, width: 1),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                    ),
+                    icon: const GoogleIcon(
+                      size: 24,
+                    ),
+                    label: Text(
+                      'Registrarse con Google',
+                      style: AppTextStyles.buttonText.copyWith(
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
                   ),
                 ),
                 const SizedBox(height: 24),
